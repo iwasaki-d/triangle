@@ -33,11 +33,11 @@ describe Triangle do
   context "三角形が作れない"  do
 
     it "三角形が作れない" do
-      expect(Triangle.check_triangle_shape( 1, 2, 3 )).to eq Triangle::MESSAGE_NOT_TRIANGLE
+      expect(Triangle.check_triangle_shape( 1, 1, 2 )).to eq Triangle::MESSAGE_NOT_TRIANGLE
     end
 
     it "三角形が作れる場合は、異なったメッセージ" do
-      expect(Triangle.check_triangle_shape( 2, 2, 3 )).not_to eq Triangle::MESSAGE_NOT_TRIANGLE
+      expect(Triangle.check_triangle_shape( 1, 1, 1 )).not_to eq Triangle::MESSAGE_NOT_TRIANGLE
     end
 
 
@@ -75,7 +75,7 @@ describe Triangle do
     end
 
     it "直角三角形ではない" do
-      expect(Triangle.check_triangle_shape( 8, 8, 3 )).not_to eq Triangle::MESSAGE_RIGHT_TRIANGLE
+      expect(Triangle.check_triangle_shape( 3, 4, 6 )).not_to eq Triangle::MESSAGE_RIGHT_TRIANGLE
     end
 
   end
@@ -95,7 +95,7 @@ describe Triangle do
     end
 
     it "二等辺三角形ではない" do
-      expect(Triangle.check_triangle_shape( 3, 3, 3 )).not_to eq Triangle::MESSAGE_ISOSCELES_TRIANGLE
+      expect(Triangle.check_triangle_shape( 2, 2, 2 )).not_to eq Triangle::MESSAGE_ISOSCELES_TRIANGLE
     end
 
   end
