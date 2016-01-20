@@ -93,7 +93,7 @@ class Triangle
       return MESSAGE_ISOSCELES_TRIANGLE
     end
 
-    #三角系であり、今までの判定に該当しなかった場合は、不等辺三角形
+    #三角形であり、今までの判定に該当しなかった場合は、不等辺三角形
     return MESSAGE_SCALENE_TRIANGLE
 
   end
