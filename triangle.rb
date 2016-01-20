@@ -76,25 +76,27 @@ class Triangle
   def self.check_triangle_shape( arg_a, arg_b, arg_c )
 
     if ! triangle?( a:arg_a, b:arg_b, c:arg_c )
-      return MESSAGE_NOT_TRIANGLE
+      message =  MESSAGE_NOT_TRIANGLE
+    else
+
+      length_hash = sort_length( a:arg_a, b:arg_b, c:arg_c )
+
+      if equilateral_triangle?(length_hash)
+        message =  MESSAGE_EQUILATERAL_TRIANGLE
+      elsif right_triangle?(length_hash)
+        message = MESSAGE_RIGHT_TRIANGLE
+      elsif isosceles_triangle?( long_length:length_hash[:long_length], middle_length:length_hash[:middle_length])
+        message = MESSAGE_ISOSCELES_TRIANGLE
+      else
+        #三角形であり、今までの判定に該当しなかった場合は、不等辺三角形
+        message = MESSAGE_SCALENE_TRIANGLE
+      end
+
     end
 
-    length_hash = sort_length( a:arg_a, b:arg_b, c:arg_c )
+    puts (message)
 
-    if equilateral_triangle?(length_hash)
-      return MESSAGE_EQUILATERAL_TRIANGLE
-    end
-
-    if right_triangle?(length_hash)
-      return MESSAGE_RIGHT_TRIANGLE
-    end
-
-    if isosceles_triangle?( long_length:length_hash[:long_length], middle_length:length_hash[:middle_length])
-      return MESSAGE_ISOSCELES_TRIANGLE
-    end
-
-    #三角形であり、今までの判定に該当しなかった場合は、不等辺三角形
-    return MESSAGE_SCALENE_TRIANGLE
+    return message
 
   end
 
